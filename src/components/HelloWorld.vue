@@ -1,6 +1,10 @@
 <template>
   <div class="hello">
     <h1 class="text-primary">{{ msg }}</h1>
+    <button v-on:click="showAlert"
+      class="btn-lg btn-primary">
+      Hello world
+    </button>
     <h2>{{ msg2 }}</h2>
 
     <div class="bg-info">
@@ -37,7 +41,8 @@
       </h3>
       <!-- iterate over a list -->
       <ul>
-        <li v-for="wizard in wizards">
+        <li v-for="wizard in wizards"
+          v-bind:key="wizard">
           {{ wizard.first }} {{ wizard.last }}
         </li>
         <li>
@@ -84,6 +89,7 @@
         <!-- add class from UX -->
         <ul>
             <li v-for="item in menuItems"
+            v-bind:key="item"
             v-on:click="buttonized = item"
             v-bind:class="{ buttonized: buttonized == item }">
                 {{item}}
@@ -195,8 +201,8 @@ export default {
   name: 'HelloWorld',
   data() {
     return {
-      msg: 'Enjoy Vue.js',
-      msg2: 'Bootstrap4 and FontAwesome5 are gtg!',
+      msg: 'Hello to You',
+      msg2: 'Here is a BasicMiner',
       // iterate over a list
       wizards: [
         { first: 'Ginny', last: 'Weasley' },
@@ -214,6 +220,12 @@ export default {
       counter: 0,
     };
   },
+  methods: {
+    showAlert(){
+      //uses sweet alert 2
+      this.$swal('Hello to You! Now, Mine!');
+    }
+  }
 };
 </script>
 
